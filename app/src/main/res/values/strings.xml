@@ -5,4 +5,6 @@
     <string name="winOrLose">TODO</string>
     <string name="hippo">TODO</string>
     <string name="lion">TODO</string>
+    <string name="instructions">Instructions</string>
+    <string name="statistics">Statistics</string>
 </resources>

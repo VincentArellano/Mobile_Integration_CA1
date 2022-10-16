@@ -1,8 +1,10 @@
 package com.example.vincent_arellano_ca1
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,19 @@ class MainActivity : AppCompatActivity() {
         // Do a image spin when the app starts
         spinImage()
 
+        Log.d("SpinImage", "MainActivity... in onCreate()")
+
+        val instructionsButton = findViewById<Button>(R.id.button2)
+        instructionsButton.setOnClickListener {
+            val intent = Intent(this, Instructions::class.java)
+            startActivity(intent)
+        }
+
+        val statisticsButton = findViewById<Button>(R.id.button3)
+        statisticsButton.setOnClickListener {
+            val intent = Intent(this, Statistics::class.java)
+            startActivity(intent)
+        }
     }
 
     /**
@@ -44,18 +59,21 @@ class MainActivity : AppCompatActivity() {
         val drawableResource = when (imageSpin) {
             1 -> R.drawable.hippo
             2 -> R.drawable.lion
+            3 -> R.drawable.croc
             else -> R.drawable.zebra
         }
 
         val drawableResource2 = when (imageSpin2) {
             1 -> R.drawable.hippo
             2 -> R.drawable.lion
+            3 -> R.drawable.croc
             else -> R.drawable.zebra
         }
 
         val drawableResource3 = when (imageSpin3) {
             1 -> R.drawable.hippo
             2 -> R.drawable.lion
+            3 -> R.drawable.croc
             else -> R.drawable.zebra
         }
 
@@ -69,11 +87,11 @@ class MainActivity : AppCompatActivity() {
         animalImage2.contentDescription = imageSpin.toString()
         animalImage3.contentDescription = imageSpin.toString()
 
-        val animalbitmap = (animalImage.getDrawable() as BitmapDrawable).bitmap
-        val animalbitmap2 = (animalImage2.getDrawable() as BitmapDrawable).bitmap
-        val animalbitmap3 = (animalImage3.getDrawable() as BitmapDrawable).bitmap
+        val animalBitmap = (animalImage.getDrawable() as BitmapDrawable).bitmap
+        val animalBitmap2 = (animalImage2.getDrawable() as BitmapDrawable).bitmap
+        val animalBitmap3 = (animalImage3.getDrawable() as BitmapDrawable).bitmap
 
-        if(animalbitmap == animalbitmap2 && animalbitmap == animalbitmap3){
+        if(animalBitmap == animalBitmap2 && animalBitmap == animalBitmap3){
             outcomeImage.setImageResource(R.drawable.win)
             outcomeImage.contentDescription = imageSpin.toString()
         }
@@ -81,6 +99,13 @@ class MainActivity : AppCompatActivity() {
             outcomeImage.setImageResource(R.drawable.loss)
             outcomeImage.contentDescription = imageSpin.toString()
         }
+
+        Log.d("SimpleUI", "..message to send is = ${imageSpin}")
+        Log.d("SimpleUI", "..message to send is = ${imageSpin2}")
+        Log.d("SimpleUI", "..message to send is = ${imageSpin3}")
+        Log.d("SimpleUI", "..message to send is = ${drawableResource}")
+        Log.d("SimpleUI", "..message to send is = ${drawableResource2}")
+        Log.d("SimpleUI", "..message to send is = ${drawableResource3}")
     }
 }
 
@@ -95,4 +120,5 @@ class Image(private val numImages: Int) {
     fun spin(): Int {
         return (1..numImages).random()
     }
+
 }
