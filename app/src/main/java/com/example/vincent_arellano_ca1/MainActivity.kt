@@ -1,9 +1,12 @@
 package com.example.vincent_arellano_ca1
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +31,8 @@ class MainActivity : AppCompatActivity() {
         // Create new Image object with 3 images and spin it
         val image = Image(3)
         val imageSpin = image.spin()
-
-
+        val imageSpin2 = image.spin()
+        val imageSpin3 = image.spin()
 
         // Find the ImageView in the layout
         val animalImage: ImageView = findViewById(R.id.imageView)
@@ -44,17 +47,33 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.zebra
         }
 
+        val drawableResource2 = when (imageSpin2) {
+            1 -> R.drawable.hippo
+            2 -> R.drawable.lion
+            else -> R.drawable.zebra
+        }
+
+        val drawableResource3 = when (imageSpin3) {
+            1 -> R.drawable.hippo
+            2 -> R.drawable.lion
+            else -> R.drawable.zebra
+        }
+
         // Update the ImageView with the correct drawable resource ID
         animalImage.setImageResource(drawableResource)
-        animalImage2.setImageResource(drawableResource)
-        animalImage3.setImageResource(drawableResource)
+        animalImage2.setImageResource(drawableResource2)
+        animalImage3.setImageResource(drawableResource3)
 
         // Update the content description
         animalImage.contentDescription = imageSpin.toString()
         animalImage2.contentDescription = imageSpin.toString()
         animalImage3.contentDescription = imageSpin.toString()
 
-        if(animalImage == animalImage2 && animalImage == animalImage3){
+        val animalbitmap = (animalImage.getDrawable() as BitmapDrawable).bitmap
+        val animalbitmap2 = (animalImage2.getDrawable() as BitmapDrawable).bitmap
+        val animalbitmap3 = (animalImage3.getDrawable() as BitmapDrawable).bitmap
+
+        if(animalbitmap == animalbitmap2 && animalbitmap == animalbitmap3){
             outcomeImage.setImageResource(R.drawable.win)
             outcomeImage.contentDescription = imageSpin.toString()
         }
