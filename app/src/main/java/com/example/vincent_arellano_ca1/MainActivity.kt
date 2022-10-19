@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         spinButton.setOnClickListener { spinImage() }
 
         // Do a image spin when the app starts
-        spinImage()
+        val (numOfWins,numOfSpins,winSpinRatio) = spinImage()
 
         Log.d("SpinImage", "MainActivity... in onCreate()")
 
@@ -33,8 +34,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         val statisticsButton = findViewById<Button>(R.id.button3)
-        statisticsButton.setOnClickListener {
-            val intent = Intent(this, Statistics::class.java)
+        instructionsButton.setOnClickListener {
+            val intent = Intent(this, Statistics::class.java).apply {
+                putExtra("NumOfSpins", numOfSpins)
+                putExtra("NumOfWins",numOfWins)
+                putExtra("WinSpinRatio",winSpinRatio)
+            }
             startActivity(intent)
         }
     }
@@ -42,9 +47,12 @@ class MainActivity : AppCompatActivity() {
     /**
      * Spin the image and update the screen with the result.
      */
-    private fun spinImage() {
-        // Create new Image object with 3 images and spin it
-        val image = Image(3)
+    private fun spinImage() :Triple<Int, Int, Int>{
+        var numOfSpins = 0
+        var numOfWins = 0
+        var winSpinRatio = 0
+        // Create new Image object with 4 images and spin it
+        val image = Image(4)
         val imageSpin = image.spin()
         val imageSpin2 = image.spin()
         val imageSpin3 = image.spin()
@@ -94,18 +102,27 @@ class MainActivity : AppCompatActivity() {
         if(animalBitmap == animalBitmap2 && animalBitmap == animalBitmap3){
             outcomeImage.setImageResource(R.drawable.win)
             outcomeImage.contentDescription = imageSpin.toString()
+            numOfWins += numOfWins
         }
         else{
             outcomeImage.setImageResource(R.drawable.loss)
             outcomeImage.contentDescription = imageSpin.toString()
         }
+        numOfSpins += numOfSpins
+        if(numOfWins>0) {
+            winSpinRatio = numOfWins / numOfSpins
+        }
+        else{
+            winSpinRatio = 0
+        }
+        Log.d("SpinImage", "Number of Wins = ${numOfWins}")
+        Log.d("SpinImage", "Number of Spins = ${numOfSpins}")
+        Log.d("SpinImage", "Win/Loss Ratio = ${winSpinRatio}")
+        Log.d("SpinImage", "Image 1 = ${imageSpin}")
+        Log.d("SpinImage", "Image 2 = ${imageSpin2}")
+        Log.d("SpinImage", "Image 3 = ${imageSpin3}")
 
-        Log.d("SimpleUI", "..message to send is = ${imageSpin}")
-        Log.d("SimpleUI", "..message to send is = ${imageSpin2}")
-        Log.d("SimpleUI", "..message to send is = ${imageSpin3}")
-        Log.d("SimpleUI", "..message to send is = ${drawableResource}")
-        Log.d("SimpleUI", "..message to send is = ${drawableResource2}")
-        Log.d("SimpleUI", "..message to send is = ${drawableResource3}")
+        return Triple(numOfWins,numOfSpins,winSpinRatio)
     }
 }
 

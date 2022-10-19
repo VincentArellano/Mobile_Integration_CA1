@@ -7,4 +7,12 @@
     <string name="lion">TODO</string>
     <string name="instructions">Instructions</string>
     <string name="statistics">Statistics</string>
+    <string name="heading">Instructions</string>
+    <string name="back">Back</string>
+    <string name="to_win_you_must_get_the_same_three_animal_image">To win you must get the same three animal image.</string>
+    <string name="click_the_button_quot_spin_quot_to_spin_the_images">Click the button \"SPIN\" to spin the images.</string>
+    <string name="otherwise_you_have_lost_and_should_respin">Otherwise you have lost and should respin.</string>
+    <string name="spinButton">TODO</string>
+    <string name="win">TODO</string>
+    <string name="loss">TODO</string>
 </resources>
