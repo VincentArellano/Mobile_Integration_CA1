@@ -20,6 +20,6 @@ class Instructions : AppCompatActivity() {
             startActivity(intent)
         }
 
-        Log.d("SpinImage", "MainActivity... in onCreate()")
+        Log.d("SpinImage", "Instructions... in onCreate()")
     }
 }

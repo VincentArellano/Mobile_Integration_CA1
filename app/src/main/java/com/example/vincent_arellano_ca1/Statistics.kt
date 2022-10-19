@@ -14,6 +14,6 @@ class Statistics : AppCompatActivity() {
         setContentView(R.layout.statistics)
 
 
-        Log.d("SpinImage", "MainActivity... in onCreate()")
+        Log.d("SpinImage", "Statistics... in onCreate()")
     }
 }

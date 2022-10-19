@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 
 class MainActivity : AppCompatActivity() {
+    var numOfSpins = -1
+    var numOfWins = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val statisticsButton = findViewById<Button>(R.id.button3)
-        instructionsButton.setOnClickListener {
+        statisticsButton.setOnClickListener {
             val intent = Intent(this, Statistics::class.java).apply {
                 putExtra("NumOfSpins", numOfSpins)
                 putExtra("NumOfWins",numOfWins)
@@ -47,10 +49,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Spin the image and update the screen with the result.
      */
-    private fun spinImage() :Triple<Int, Int, Int>{
-        var numOfSpins = 0
-        var numOfWins = 0
-        var winSpinRatio = 0
+    private fun spinImage() :Triple<Int, Int, Double>{
+        var winSpinRatio: Double
         // Create new Image object with 4 images and spin it
         val image = Image(4)
         val imageSpin = image.spin()
@@ -102,18 +102,18 @@ class MainActivity : AppCompatActivity() {
         if(animalBitmap == animalBitmap2 && animalBitmap == animalBitmap3){
             outcomeImage.setImageResource(R.drawable.win)
             outcomeImage.contentDescription = imageSpin.toString()
-            numOfWins += numOfWins
+            numOfWins += 1
         }
         else{
             outcomeImage.setImageResource(R.drawable.loss)
             outcomeImage.contentDescription = imageSpin.toString()
         }
-        numOfSpins += numOfSpins
+        numOfSpins += 1
         if(numOfWins>0) {
-            winSpinRatio = numOfWins / numOfSpins
+            winSpinRatio = (numOfWins.toDouble() / numOfSpins)
         }
         else{
-            winSpinRatio = 0
+            winSpinRatio = 0.00
         }
         Log.d("SpinImage", "Number of Wins = ${numOfWins}")
         Log.d("SpinImage", "Number of Spins = ${numOfSpins}")
