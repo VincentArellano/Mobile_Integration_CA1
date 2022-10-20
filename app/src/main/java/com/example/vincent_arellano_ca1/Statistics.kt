@@ -17,8 +17,8 @@ class Statistics : AppCompatActivity() {
 
         val backButton = findViewById<Button>(R.id.button6)
         backButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val backIntent = Intent(this, MainActivity::class.java)
+            startActivity(backIntent)
         }
         Log.d("SpinImage", "Statistics... in onCreate()")
 

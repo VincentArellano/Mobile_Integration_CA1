@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 var numOfSpins = -1
 var numOfWins = 0
+var winSpinRatio = 0.00
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,15 +30,6 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("SpinImage", "MainActivity... in onCreate()")
 
-        val statisticsButton = findViewById<Button>(R.id.button3)
-        statisticsButton.setOnClickListener {
-            val startIntent = Intent(this, Statistics::class.java).apply {
-                putExtra("NumOfSpins", numOfSpins)
-                putExtra("NumOfWins",numOfWins)
-                putExtra("WinSpinRatio",winSpinRatio)
-            }
-            startActivity(startIntent)
-        }
         val instructionsButton = findViewById<Button>(R.id.button2)
         instructionsButton.setOnClickListener {
             val intent = Intent(this, Instructions::class.java)
@@ -45,11 +37,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun sendStats(view: View){
+            val startIntent = Intent(this, Statistics::class.java).apply {
+                putExtra("NumOfSpins", numOfSpins)
+                putExtra("NumOfWins",numOfWins)
+                putExtra("WinSpinRatio",winSpinRatio)
+            }
+            startActivity(startIntent)
+    }
+
     /**
      * Spin the image and update the screen with the result.
      */
     private fun spinImage() :Triple<Int, Int, Double>{
-        var winSpinRatio: Double
         // Create new Image object with 4 images and spin it
         val image = Image(4)
         val imageSpin = image.spin()
