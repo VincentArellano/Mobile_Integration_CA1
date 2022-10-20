@@ -10,10 +10,10 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
-
+var numOfSpins = -1
+var numOfWins = 0
 class MainActivity : AppCompatActivity() {
-    var numOfSpins = -1
-    var numOfWins = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,19 +29,18 @@ class MainActivity : AppCompatActivity() {
 
         Log.d("SpinImage", "MainActivity... in onCreate()")
 
-        val instructionsButton = findViewById<Button>(R.id.button2)
-        instructionsButton.setOnClickListener {
-            val intent = Intent(this, Instructions::class.java)
-            startActivity(intent)
-        }
-
         val statisticsButton = findViewById<Button>(R.id.button3)
         statisticsButton.setOnClickListener {
-            val intent = Intent(this, Statistics::class.java).apply {
+            val startIntent = Intent(this, Statistics::class.java).apply {
                 putExtra("NumOfSpins", numOfSpins)
                 putExtra("NumOfWins",numOfWins)
                 putExtra("WinSpinRatio",winSpinRatio)
             }
+            startActivity(startIntent)
+        }
+        val instructionsButton = findViewById<Button>(R.id.button2)
+        instructionsButton.setOnClickListener {
+            val intent = Intent(this, Instructions::class.java)
             startActivity(intent)
         }
     }
@@ -115,12 +114,8 @@ class MainActivity : AppCompatActivity() {
         else{
             winSpinRatio = 0.00
         }
-        Log.d("SpinImage", "Number of Wins = ${numOfWins}")
-        Log.d("SpinImage", "Number of Spins = ${numOfSpins}")
-        Log.d("SpinImage", "Win/Loss Ratio = ${winSpinRatio}")
-        Log.d("SpinImage", "Image 1 = ${imageSpin}")
-        Log.d("SpinImage", "Image 2 = ${imageSpin2}")
-        Log.d("SpinImage", "Image 3 = ${imageSpin3}")
+        Log.d("SpinImage","Num of Spins = ${numOfSpins} ," + "Num of Wins = $numOfWins , Win/Loss Ratio = $winSpinRatio")
+        Log.d("SpinImage", "Image 1 = ${imageSpin} ," + "Image 2 = ${imageSpin2} ," + "Image 3 = ${imageSpin3}")
 
         return Triple(numOfWins,numOfSpins,winSpinRatio)
     }
