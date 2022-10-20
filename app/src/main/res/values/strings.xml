@@ -15,4 +15,11 @@
     <string name="spinButton">TODO</string>
     <string name="win">TODO</string>
     <string name="loss">TODO</string>
+    <string name="statisticsTitle">Statistics</string>
+    <string name="number_of_wins">Number of Wins</string>
+    <string name="number_of_spins">Number of Spins</string>
+    <string name="win_loss_ratio">Win/Loss Ratio</string>
+    <string name="back_to_main">Back</string>
+    <string name="backButton">back</string>
+    <string name="backToMain">back</string>
 </resources>

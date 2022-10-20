@@ -14,7 +14,7 @@ class Instructions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.instructions)
 
-        val instructionsButton = findViewById<Button>(R.id.button4)
+        val instructionsButton = findViewById<Button>(R.id.button5)
         instructionsButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
