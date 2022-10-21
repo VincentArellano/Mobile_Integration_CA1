@@ -8,9 +8,11 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vincent_arellano_ca1.adapter.ItemAdapter
 import com.example.vincent_arellano_ca1.data.Datasource
+
 
 class Instructions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +22,8 @@ class Instructions : AppCompatActivity() {
         val instructionsButton = findViewById<Button>(R.id.button5)
         instructionsButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, instructionsButton, "transition_name")
+            startActivity(intent, options.toBundle())
         }
         // Initialize data.
         val myDataset = Datasource().loadAffirmations()

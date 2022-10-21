@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 
 class Statistics : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +19,8 @@ class Statistics : AppCompatActivity() {
         val backButton = findViewById<Button>(R.id.button6)
         backButton.setOnClickListener {
             val backIntent = Intent(this, MainActivity::class.java)
-            startActivity(backIntent)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, backButton, "transition_name")
+            startActivity(backIntent, options.toBundle())
         }
         Log.d("SpinImage", "Statistics... in onCreate()")
 

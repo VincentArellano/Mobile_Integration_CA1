@@ -8,15 +8,18 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 
 var numOfSpins = -1
 var numOfWins = 0
 var winSpinRatio = 0.00
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         // Find the Button in the layout
         val spinButton: Button = findViewById(R.id.button)
@@ -32,17 +35,20 @@ class MainActivity : AppCompatActivity() {
         val instructionsButton = findViewById<Button>(R.id.button2)
         instructionsButton.setOnClickListener {
             val intent = Intent(this, Instructions::class.java)
-            startActivity(intent)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, instructionsButton, "transition_name")
+            startActivity(intent, options.toBundle())
         }
     }
 
     fun sendStats(view: View){
-            val startIntent = Intent(this, Statistics::class.java).apply {
-                putExtra("NumOfSpins", numOfSpins)
-                putExtra("NumOfWins",numOfWins)
-                putExtra("WinSpinRatio",winSpinRatio)
-            }
-            startActivity(startIntent)
+        val statisticsButton = findViewById<Button>(R.id.button3)
+        val startIntent = Intent(this, Statistics::class.java).apply {
+            putExtra("NumOfSpins", numOfSpins)
+            putExtra("NumOfWins",numOfWins)
+            putExtra("WinSpinRatio",winSpinRatio)
+        }
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, statisticsButton, "transition_name")
+        startActivity(startIntent, options.toBundle())
     }
 
     /**

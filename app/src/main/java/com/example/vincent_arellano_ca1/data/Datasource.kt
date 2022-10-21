@@ -6,7 +6,7 @@ class Datasource {
 
     fun loadAffirmations(): List<Affirmation> {
         return listOf<Affirmation>(
-            Affirmation(R.string.affirmation1, R.drawable.spinbutton),
+            Affirmation(R.string.affirmation1, R.drawable.spin),
             Affirmation(R.string.affirmation2, R.drawable.wininstruction),
             Affirmation(R.string.affirmation3, R.drawable.lossinstruction)
         )
