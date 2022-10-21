@@ -8,6 +8,9 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.example.vincent_arellano_ca1.adapter.ItemAdapter
+import com.example.vincent_arellano_ca1.data.Datasource
 
 class Instructions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +22,15 @@ class Instructions : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+        // Initialize data.
+        val myDataset = Datasource().loadAffirmations()
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+        recyclerView.adapter = ItemAdapter(this, myDataset)
+
+        // Use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        recyclerView.setHasFixedSize(true)
 
         Log.d("SpinImage", "Instructions... in onCreate()")
     }
