@@ -9,8 +9,8 @@
     <string name="statistics">Statistics</string>
     <string name="heading">Instructions</string>
     <string name="back">Back</string>
-    <string name="affirmation1">To win you must get the same three animal image.</string>
-    <string name="affirmation2">Click the button \"SPIN\" to spin the images.</string>
+    <string name="affirmation1">Click the button \"SPIN\" to spin the images.</string>
+    <string name="affirmation2">To win you must get the same three animal image.</string>
     <string name="affirmation3">Otherwise you have lost and should re-spin.</string>
     <string name="spinButton">TODO</string>
     <string name="win">TODO</string>

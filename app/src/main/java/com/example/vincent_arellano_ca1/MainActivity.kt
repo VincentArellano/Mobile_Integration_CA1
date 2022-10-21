@@ -1,7 +1,6 @@
 package com.example.vincent_arellano_ca1
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
@@ -99,12 +98,12 @@ class MainActivity : AppCompatActivity() {
         val animalBitmap3 = (animalImage3.getDrawable() as BitmapDrawable).bitmap
 
         if(animalBitmap == animalBitmap2 && animalBitmap == animalBitmap3){
-            outcomeImage.setImageResource(R.drawable.win)
+            outcomeImage.setImageResource(R.drawable.instructionwin)
             outcomeImage.contentDescription = imageSpin.toString()
             numOfWins += 1
         }
         else{
-            outcomeImage.setImageResource(R.drawable.loss)
+            outcomeImage.setImageResource(R.drawable.instructionloss)
             outcomeImage.contentDescription = imageSpin.toString()
         }
         numOfSpins += 1
