@@ -69,21 +69,21 @@ class MainActivity : AppCompatActivity() {
 
         // Determine which drawable resource ID to use based on the image spin
         val drawableResource = when (imageSpin) {
-            1 -> R.drawable.bear
+            1 -> R.drawable.hippo
             2 -> R.drawable.lion
             3 -> R.drawable.croc
             else -> R.drawable.zebra
         }
 
         val drawableResource2 = when (imageSpin2) {
-            1 -> R.drawable.bear
+            1 -> R.drawable.hippo
             2 -> R.drawable.lion
             3 -> R.drawable.croc
             else -> R.drawable.zebra
         }
 
         val drawableResource3 = when (imageSpin3) {
-            1 -> R.drawable.bear
+            1 -> R.drawable.hippo
             2 -> R.drawable.lion
             3 -> R.drawable.croc
             else -> R.drawable.zebra
@@ -99,9 +99,9 @@ class MainActivity : AppCompatActivity() {
         animalImage2.contentDescription = imageSpin.toString()
         animalImage3.contentDescription = imageSpin.toString()
 
-        val animalBitmap = (animalImage.getDrawable() as BitmapDrawable).bitmap
-        val animalBitmap2 = (animalImage2.getDrawable() as BitmapDrawable).bitmap
-        val animalBitmap3 = (animalImage3.getDrawable() as BitmapDrawable).bitmap
+        val animalBitmap = (animalImage.drawable as BitmapDrawable).bitmap
+        val animalBitmap2 = (animalImage2.drawable as BitmapDrawable).bitmap
+        val animalBitmap3 = (animalImage3.drawable as BitmapDrawable).bitmap
 
         if(animalBitmap == animalBitmap2 && animalBitmap == animalBitmap3){
             outcomeImage.setImageResource(R.drawable.ic_instructionwin)
