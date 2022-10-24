@@ -69,21 +69,21 @@ class MainActivity : AppCompatActivity() {
 
         // Determine which drawable resource ID to use based on the image spin
         val drawableResource = when (imageSpin) {
-            1 -> R.drawable.hippo
+            1 -> R.drawable.bear
             2 -> R.drawable.lion
             3 -> R.drawable.croc
             else -> R.drawable.zebra
         }
 
         val drawableResource2 = when (imageSpin2) {
-            1 -> R.drawable.hippo
+            1 -> R.drawable.bear
             2 -> R.drawable.lion
             3 -> R.drawable.croc
             else -> R.drawable.zebra
         }
 
         val drawableResource3 = when (imageSpin3) {
-            1 -> R.drawable.hippo
+            1 -> R.drawable.bear
             2 -> R.drawable.lion
             3 -> R.drawable.croc
             else -> R.drawable.zebra
