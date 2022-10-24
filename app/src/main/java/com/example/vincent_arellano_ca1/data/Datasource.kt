@@ -6,9 +6,9 @@ class Datasource {
 
     fun loadAffirmations(): List<Affirmation> {
         return listOf<Affirmation>(
-            Affirmation(R.string.affirmation1, R.drawable.spin),
-            Affirmation(R.string.affirmation2, R.drawable.wininstruction),
-            Affirmation(R.string.affirmation3, R.drawable.lossinstruction)
+            Affirmation(R.string.affirmation1, R.drawable.ic_spin),
+            Affirmation(R.string.affirmation2, R.drawable.ic_win),
+            Affirmation(R.string.affirmation3, R.drawable.ic_loss)
         )
     }
 }
