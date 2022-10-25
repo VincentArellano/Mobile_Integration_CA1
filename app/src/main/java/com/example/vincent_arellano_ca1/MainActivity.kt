@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
         val animalBitmap2 = (animalImage2.drawable as BitmapDrawable).bitmap
         val animalBitmap3 = (animalImage3.drawable as BitmapDrawable).bitmap
 
-        if(animalBitmap == animalBitmap2 && animalBitmap == animalBitmap3){
+        if(animalBitmap == animalBitmap2 && animalBitmap == animalBitmap3 && numOfSpins>0){
             outcomeImage.setImageResource(R.drawable.ic_instructionwin)
             outcomeImage.contentDescription = imageSpin.toString()
             numOfWins += 1

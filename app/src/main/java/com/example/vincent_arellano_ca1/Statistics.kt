@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import java.text.NumberFormat
+import java.util.*
 
 class Statistics : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +30,7 @@ class Statistics : AppCompatActivity() {
         var NumOfSpins = intent.getIntExtra("NumOfSpins", 1)
         var NumOfWins = intent.getIntExtra("NumOfWins", 1)
         var WinSpinRatio = intent.getDoubleExtra("WinSpinRatio", 1.1)
-        Log.d("SpinImage","onCreate() Num of Spins = ${NumOfSpins}" + "Num of Wins = $NumOfWins , Win/Loss Ratio = $WinSpinRatio")
+        Log.d("SpinImage","onCreate() Num of Spins = ${NumOfSpins}" + ", Num of Wins = $NumOfWins , Win/Loss Ratio = $WinSpinRatio")
 
         val textView = findViewById<TextView>(R.id.textView9).apply {
             text = NumOfWins.toString()
@@ -39,7 +41,9 @@ class Statistics : AppCompatActivity() {
         }
 
         val textView3 = findViewById<TextView>(R.id.textView11).apply {
-            text = String.format("%.2f", WinSpinRatio)
+            val formatStat = NumberFormat.getPercentInstance(Locale.US)
+            val percentage = formatStat.format(WinSpinRatio)
+            text = String.format("$percentage%")
         }
     }
 }
