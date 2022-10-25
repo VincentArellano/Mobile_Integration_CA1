@@ -10,13 +10,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import androidx.databinding.DataBindingUtil
 import java.text.NumberFormat
 import java.util.*
+import com.example.vincent_arellano_ca1.databinding.StatisticsBinding
 
 class Statistics : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.statistics)
+        val homeBinding: StatisticsBinding = DataBindingUtil.setContentView(this, R.layout.statistics)
+        homeBinding.statisticsTitle = "Statistics"
+        homeBinding.backToMain = "Back"
+        homeBinding.numberOfWins = "No. of Wins"
+        homeBinding.numberOfSpins = "No. of Spins"
+        homeBinding.winLossRatio = "Win/Loss Ratio"
 
         val backButton = findViewById<Button>(R.id.button6)
         backButton.setOnClickListener {

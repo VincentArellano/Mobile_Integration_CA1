@@ -9,15 +9,19 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vincent_arellano_ca1.adapter.ItemAdapter
 import com.example.vincent_arellano_ca1.data.Datasource
+import com.example.vincent_arellano_ca1.databinding.InstructionsBinding
 
 
 class Instructions : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.instructions)
+        val homeBinding: InstructionsBinding = DataBindingUtil.setContentView(this, R.layout.instructions)
+        homeBinding.heading = "Instructions"
+        homeBinding.backButton = "Back"
 
         val instructionsButton = findViewById<Button>(R.id.button5)
         instructionsButton.setOnClickListener {

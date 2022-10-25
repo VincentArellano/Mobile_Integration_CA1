@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
+import androidx.databinding.DataBindingUtil
+import com.example.vincent_arellano_ca1.databinding.ActivityMainBinding
 
 var numOfSpins = -1
 var numOfWins = 0
@@ -19,6 +21,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val homeBinding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        homeBinding.spin = "Spin"
+        homeBinding.instructions = "Instructions"
+        homeBinding.statistics = "Statistics"
 
 
         // Find the Button in the layout
